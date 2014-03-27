@@ -31,6 +31,7 @@ namespace SitefinityWebApp
 		private const string TestimonialsPageID = "AA6EB759-BCCE-4417-8616-1C5C36FD4417";
 
 		private const string SubmitTestimonialPageID = "CD2CB68F-A2BF-46C8-8C99-B36949FD94FE";
+
 		private const string TESIMONIAL_TEXT = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus, tellus eu laoreet bibendum, dolor ante porttitor nunc, non convallis magna arcu eget dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p><p>Nunc condimentum condimentum diam id dapibus. Proin et risus leo. Mauris tristique feugiat ante, a tristique tellus vehicula rhoncus. Mauris odio nibh, lacinia sit amet vehicula in, feugiat ut turpis.</p><p>Suspendisse mi felis, lobortis non ultricies eu, fermentum vitae massa. Quisque laoreet elit placerat nisi placerat congue faucibus enim malesuada. Integer justo erat, faucibus nec tincidunt sed, fringilla id nisl. Sed enim libero, adipiscing eget dignissim et, suscipit non odio.</p>";
 
 		protected void Application_Start(object sender, EventArgs e)
