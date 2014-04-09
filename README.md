@@ -23,10 +23,12 @@ The Testimonials sample project is a simple user widget-based module for maintai
 The project refers to the following NuGet packages:
 
 *TestimonialsWebsite* library
+
 Telerik.Sitefinity.All.nupkg
 
 
 *Telerik.Sitefinity.Samples.Common* library
+
 Telerik.Sitefinity.Core.nupkg
 OpenAccess.Core.nupkg
 Telerik.Sitefinity.Content.nupkg
