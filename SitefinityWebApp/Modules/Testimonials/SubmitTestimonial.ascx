@@ -1,8 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SubmitTestimonial.ascx.cs" Inherits="SitefinityWebApp.Modules.Testimonials.SubmitTestimonial" %>
-
-
-
-<%@ Register Assembly="Telerik.Sitefinity, Version=6.3.5000.0, Culture=neutral, PublicKeyToken=b28c218413bdf563" Namespace="Telerik.Sitefinity.Web.UI.Fields" TagPrefix="sf" %>
+<%@ Register Assembly="Telerik.Sitefinity" Namespace="Telerik.Sitefinity.Web.UI.Fields" TagPrefix="sf" %>
 
 <h1>Submit a testimonial</h1>
 <p>Share your thoughts below. Your testimonial will be posted after being reviewed by an administrator.</p>

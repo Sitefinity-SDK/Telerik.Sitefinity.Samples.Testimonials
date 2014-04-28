@@ -1,8 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TestimonialsAddEditView.ascx.cs" Inherits="SitefinityWebApp.Modules.Testimonials.Admin.TestimonialsAddEditView" %>
 
-
-
-<%@ Register Assembly="Telerik.Sitefinity, Version=6.3.5000.0, Culture=neutral, PublicKeyToken=b28c218413bdf563" Namespace="Telerik.Sitefinity.Web.UI.Fields" TagPrefix="sf" %>
+<%@ Register Assembly="Telerik.Sitefinity" Namespace="Telerik.Sitefinity.Web.UI.Fields" TagPrefix="sf" %>
 
 <h1 class="sfBreadCrumb">Testimonials</h1>
 
