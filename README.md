@@ -1,6 +1,8 @@
 Telerik.Sitefinity.Samples.Testimonials
 =======================================
 
+[![Build Status](http://sdk-jenkins-ci.cloudapp.net/buildStatus/icon?job=Telerik.Sitefinity.Samples.Testimonials.CI)](http://sdk-jenkins-ci.cloudapp.net/job/Telerik.Sitefinity.Samples.Testimonials.CI/)
+
 The Testimonials sample project is a simple user widget-based module for maintaining a list of testimonials that are submitted by users. The Testimonials sample demonstrates how to create and install a basic intra-site module, based on a user wiget.
 
 ### Requirements
