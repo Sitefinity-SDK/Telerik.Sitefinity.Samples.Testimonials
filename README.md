@@ -29,7 +29,7 @@ Clear the NuGet cache files. To do this:
 2. Modify the **connectionString** value to match your server address.
 
 For version-specific details about the required Sitefinity NuGet packages for this sample application, click on [Releases]
- (https://github.com/Sitefinity-SDK/Telerik.Sitefinity.Samples.Testimonials/releases).
+(https://github.com/Sitefinity-SDK/Telerik.Sitefinity.Samples.Testimonials/releases).
 
 ### Login
 
