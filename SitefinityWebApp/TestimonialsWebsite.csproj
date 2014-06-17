@@ -32,6 +32,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+	<StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
     <EnhancerAssembly>$(SolutionDir)\packages\Telerik.DataAccess.Fluent.2014.1.403.2\tools\enhancer\enhancer.exe</EnhancerAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
