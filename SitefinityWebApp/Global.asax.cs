@@ -1,25 +1,25 @@
-﻿using System;
+﻿using SitefinityWebApp.Modules.Testimonials;
+using SitefinityWebApp.Modules.Testimonials.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using Telerik.Sitefinity.Abstractions;
-using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Abstractions.VirtualPath.Configuration;
-using SitefinityWebApp.Modules.Testimonials;
+using Telerik.Sitefinity.Configuration;
+using Telerik.Sitefinity.Data.OA;
+using Telerik.Sitefinity.Modules.GenericContent.Web.UI;
 using Telerik.Sitefinity.Modules.Pages;
 using Telerik.Sitefinity.Pages.Model;
-using SitefinityWebApp.Modules.Testimonials.Data;
 using Telerik.Sitefinity.Samples.Common;
-using Telerik.Sitefinity.Modules.GenericContent.Web.UI;
-using Telerik.Sitefinity.Data.OA;
 using Telerik.Sitefinity.Services;
 
 namespace SitefinityWebApp
 {
 	public class Global : System.Web.HttpApplication
-	{
+    {
 		private const string SamplesThemeName = "SamplesTheme";     
 		private const string SamplesThemePath = "~/App_Data/Sitefinity/WebsiteTemplates/Samples/App_Themes/Samples";
 
@@ -180,7 +180,6 @@ namespace SitefinityWebApp
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
-
 		}
 
 		protected void Session_End(object sender, EventArgs e)
