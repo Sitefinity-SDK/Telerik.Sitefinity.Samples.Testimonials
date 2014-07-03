@@ -37,8 +37,14 @@ namespace SitefinityWebApp
 		protected void Application_Start(object sender, EventArgs e)
 		{
 			Telerik.Sitefinity.Abstractions.Bootstrapper.Initializing += new EventHandler<Telerik.Sitefinity.Data.ExecutingEventArgs>(Bootstrapper_Initializing);
-			Telerik.Sitefinity.Abstractions.Bootstrapper.Initialized += new EventHandler<Telerik.Sitefinity.Data.ExecutedEventArgs>(Bootstrapper_Initialized);
+            SystemManager.ApplicationStart += SystemManager_ApplicationStart;
 		}
+
+        void SystemManager_ApplicationStart(object sender, EventArgs e)
+        {
+            SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(CreateSampleWorker);
+            SystemManager.RunWithElevatedPrivilege(worker);
+        }
 
 		protected void Bootstrapper_Initializing(object sender, Telerik.Sitefinity.Data.ExecutingEventArgs args)
 		{
@@ -47,15 +53,6 @@ namespace SitefinityWebApp
                 SampleUtilities.RegisterModule<TestimonialsModule>("Testimonials", "A simple user-control based module for maintaining a list of testimonials that can be sumitted by users.");
 			}
 		}
-
-        protected void Bootstrapper_Initialized(object sender, Telerik.Sitefinity.Data.ExecutedEventArgs args)
-        {
-            if (args.CommandName == "Bootstrapped")
-            {
-                SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(CreateSampleWorker);
-                SystemManager.RunWithElevatedPrivilege(worker);
-            }
-        }
 
         private void CreateSampleWorker(object[] args)
         {            
