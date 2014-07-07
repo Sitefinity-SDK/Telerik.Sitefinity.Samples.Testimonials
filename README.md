@@ -7,8 +7,9 @@ The Testimonials sample project is a simple user widget-based module for maintai
 
 ### Requirements
 
-* Sitefinity license
-
+* Sitefinity 7.1 Beta license
+ 
+  **NOTE**: For more information about acquiring a Sitefinity Beta license, contact [sales@sitefinity.com](sales@sitefinity.com)
 * .NET Framework 4
 
 * Visual Studio 2012
