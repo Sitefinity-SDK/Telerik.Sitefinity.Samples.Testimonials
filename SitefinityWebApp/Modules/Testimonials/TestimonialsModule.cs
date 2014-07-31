@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Telerik.Sitefinity.Configuration;
-using Telerik.Sitefinity.Abstractions;
-using Telerik.Sitefinity.Services;
-using SitefinityWebApp.Modules.Testimonials.Data;
-using Telerik.Sitefinity.GenericContent.Model;
-using Telerik.Sitefinity.Pages.Model;
-using Telerik.Sitefinity.Modules.Pages.Configuration;
-using Telerik.Sitefinity.Modules.Pages;
 using SitefinityWebApp.Modules.Testimonials.Admin;
+using SitefinityWebApp.Modules.Testimonials.Data;
+using Telerik.Sitefinity.Abstractions;
+using Telerik.Sitefinity.Configuration;
+using Telerik.Sitefinity.GenericContent.Model;
+using Telerik.Sitefinity.Modules.Pages;
+using Telerik.Sitefinity.Modules.Pages.Configuration;
+using Telerik.Sitefinity.Pages.Model;
+using Telerik.Sitefinity.Services;
 
 namespace SitefinityWebApp.Modules.Testimonials
 {
@@ -22,8 +22,6 @@ namespace SitefinityWebApp.Modules.Testimonials
 		/// <param name="initializer">The Site Initializer. A helper class for installing Sitefinity modules.</param>
 		public override void Install(SiteInitializer initializer)
 		{
-			#region Install Pages 
-			
 			// get page manager
 			var pageManager = initializer.PageManager;
 
@@ -33,7 +31,7 @@ namespace SitefinityWebApp.Modules.Testimonials
 			{
 				// create admin list view control and add to new landing page
 				var ctrl = pageManager.CreateControl<PageControl>("~/Modules/Testimonials/Admin/TestimonialsAdminView.ascx", "Content");
-				CreatePage(pageManager, LandingPageId, SiteInitializer.ModulesNodeId, TestimonialsModule.ModuleName, true, TestimonialsModule.ModuleName, ctrl);
+				this.CreatePage(pageManager, this.LandingPageId, SiteInitializer.ModulesNodeId, TestimonialsModule.ModuleName, true, TestimonialsModule.ModuleName, ctrl);
 			}
 
 			// create testimonials "Create" Page if doesn't exist
@@ -55,7 +53,7 @@ namespace SitefinityWebApp.Modules.Testimonials
 				prop.Value = SitefinityWebApp.Modules.Testimonials.Admin.TestimonialsAddEditView.AdminControlMode.Create.ToString();
 
 				// create backend page and add control
-				CreatePage(pageManager, CreatePageId, LandingPageId, "Create", false, "Create Testimonial", ctrl);
+				this.CreatePage(pageManager, this.CreatePageId, this.LandingPageId, "Create", false, "Create Testimonial", ctrl);
 			}
 
 			// create testimonials "Edit" Page if doesn't exist
@@ -77,10 +75,8 @@ namespace SitefinityWebApp.Modules.Testimonials
 				prop.Value = SitefinityWebApp.Modules.Testimonials.Admin.TestimonialsAddEditView.AdminControlMode.Edit.ToString();
 
 				// create backend page and add control
-				CreatePage(pageManager, EditPageId, LandingPageId, "Edit", false, "Edit Testimonial", ctrl);
+				this.CreatePage(pageManager, this.EditPageId, this.LandingPageId, "Edit", false, "Edit Testimonial", ctrl);
 			}
-
-			#endregion
 
 			#region Register Toolbox Widget
 
@@ -134,7 +130,7 @@ namespace SitefinityWebApp.Modules.Testimonials
             #endregion
         }
   
-		private void CreatePage(PageManager pageManager, Guid pageID, Guid parentPageID, string UrlName, bool ShowInNavigation, string Title, PageControl control)
+		private void CreatePage(PageManager pageManager, Guid pageID, Guid parentPageID, string urlName, bool showInNavigation, string title, PageControl control)
 		{
 			// get backend node
 			var parentPage = pageManager.GetPageNode(parentPageID);
@@ -146,15 +142,15 @@ namespace SitefinityWebApp.Modules.Testimonials
 
 			// set page properties
 			node.RenderAsLink = true;
-			node.Title = Title;
-			node.ShowInNavigation = ShowInNavigation;
-			node.UrlName = UrlName;
+			node.Title = title;
+			node.ShowInNavigation = showInNavigation;
+			node.UrlName = urlName;
 
 			// Create a PageData object to hold the actual page contents
 			var pageData = pageManager.CreatePageData();
 			pageData.Template = pageManager.GetTemplate(SiteInitializer.DefaultBackendTemplateId);
-			pageData.HtmlTitle = Title;
-			pageData.Title = Title;
+			pageData.HtmlTitle = title;
+			pageData.Title = title;
 			pageData.Status = ContentLifecycleStatus.Live;
 			pageData.Visible = true;
 			pageData.Version = 1;
@@ -171,13 +167,18 @@ namespace SitefinityWebApp.Modules.Testimonials
 		/// </summary>
 		/// <param name="initializer">The Site Initializer. A helper class for installing Sitefinity modules.</param>
 		/// <param name="upgradeFrom">The version this module us upgrading from.</param>
-		public override void Upgrade(SiteInitializer initializer, Version upgradeFrom) { }
+		public override void Upgrade(SiteInitializer initializer, Version upgradeFrom) 
+        { 
+        }
 
 		/// <summary>
 		/// Gets the module config.
 		/// </summary>
 		/// <returns></returns>
-		protected override ConfigSection GetModuleConfig() { return null; }
+		protected override ConfigSection GetModuleConfig() 
+        { 
+            return null; 
+        }
 
 		/// <summary>
 		/// Gets the landing page id for each module inherit from <see cref="T:Telerik.Sitefinity.Services.SecuredModuleBase"/> class.
@@ -208,7 +209,10 @@ namespace SitefinityWebApp.Modules.Testimonials
 		/// </value>
 		public override Type[] Managers
 		{
-			get { return null; }
+			get 
+            { 
+                return null; 
+            }
 		}
 
 		#region Static Properties

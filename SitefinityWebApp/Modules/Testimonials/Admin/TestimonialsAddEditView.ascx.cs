@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SitefinityWebApp.Modules.Testimonials.Data;
 using Telerik.Sitefinity.Web;
-using System.Text.RegularExpressions;
 
 namespace SitefinityWebApp.Modules.Testimonials.Admin
 {
@@ -14,7 +14,7 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 	{
         private const string UrlNameCharsToReplace = @"[^\w\-\!\$\'\(\)\=\@\d_]+";
         private const string UrlNameReplaceString = "-";
-		TestimonialsContext context = TestimonialsContext.Get();
+		private TestimonialsContext context = TestimonialsContext.Get();
 
 		#region Check Mode
 
@@ -30,8 +30,13 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 		/// <value>
 		/// The mode.
 		/// </value>
-		public AdminControlMode Mode { get { return _mode; } set { _mode = value; } }
-		private AdminControlMode _mode;
+		public AdminControlMode Mode 
+        { 
+            get { return this.mode; } 
+            set { this.mode = value; } 
+        }
+
+		private AdminControlMode mode;
 
 		private Guid testimonialID = Guid.Empty;
 
@@ -42,7 +47,7 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 		{
 			get
 			{
-				if (testimonialID == Guid.Empty)
+				if (this.testimonialID == Guid.Empty)
 				{
 					// ensure parameter is valid
 					var param = Request.RequestContext.RouteData.Values["Params"] as string[];
@@ -53,10 +58,11 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 					if (!Guid.TryParse(param[0], out id)) return Guid.Empty;
 
 					// retrieve testimonial
-					var testimonial = context.Testimonials.FirstOrDefault(t => t.Id == id);
-					testimonialID = (testimonial == null) ? Guid.Empty : testimonial.Id;
+					var testimonial = this.context.Testimonials.FirstOrDefault(t => t.Id == id);
+					this.testimonialID = (testimonial == null) ? Guid.Empty : testimonial.Id;
 				}
-				return testimonialID;
+
+				return this.testimonialID;
 			}
 		}
 
@@ -69,10 +75,10 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (IsPostBack || Mode != AdminControlMode.Edit) return;
+			if (this.IsPostBack || this.Mode != AdminControlMode.Edit) return;
 
 			// retrieve testimonial from DB
-			var testimonial = context.Testimonials.Where(t => t.Id == TestimonialID).FirstOrDefault();
+			var testimonial = this.context.Testimonials.Where(t => t.Id == this.TestimonialID).FirstOrDefault();
 			if (testimonial == null) return;
 
 			// show details for editing
@@ -88,14 +94,14 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-		protected void btnSave_Click(object sender, EventArgs e)
+		protected void BtnSave_Click(object sender, EventArgs e)
 		{
-			switch (Mode)
+			switch (this.Mode)
 			{
 				case AdminControlMode.Edit:
 
 					// update existing testimonial
-					var testimonial = context.Testimonials.Where(t => t.Id == TestimonialID).FirstOrDefault();
+					var testimonial = this.context.Testimonials.Where(t => t.Id == this.TestimonialID).FirstOrDefault();
 					if (testimonial == null) return; // default 404 response
 
 					// mark route handled/found
@@ -118,20 +124,20 @@ namespace SitefinityWebApp.Modules.Testimonials.Admin
 					newTestimonial.Text = Text.Value.ToString();
 					newTestimonial.Rating = Rating.Value;
 					newTestimonial.Published = Published.Checked;
-					context.Add(newTestimonial);
+					this.context.Add(newTestimonial);
 					break;
 			}
 
 			// save and return to main view
-			context.SaveChanges();
-			Response.Redirect(ResolveUrl(SiteMapBase.GetActualCurrentNode().ParentNode.Url));
+			this.context.SaveChanges();
+			Response.Redirect(this.ResolveUrl(SiteMapBase.GetActualCurrentNode().ParentNode.Url));
 		}
 
 		protected override void OnUnload(EventArgs e)
 		{
 			base.OnUnload(e);
-			if (context != null)
-				context.Dispose();
+			if (this.context != null)
+				this.context.Dispose();
 		}
 	}
 }

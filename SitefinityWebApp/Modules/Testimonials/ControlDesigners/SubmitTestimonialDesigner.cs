@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Telerik.Sitefinity.Web.UI.ControlDesign;
 using System.Web.UI;
+using Telerik.Sitefinity.Web.UI.ControlDesign;
 
 namespace SitefinityWebApp.Modules.Testimonials.ControlDesigners
 {
@@ -18,7 +18,8 @@ namespace SitefinityWebApp.Modules.Testimonials.ControlDesigners
 			base.DesignerMode = ControlDesignerModes.Simple;
 		}
 
-		private string _layoutTemplatePath = "~/Modules/Testimonials/ControlDesigners/SubmitTestimonialDesignerTemplate.ascx";
+		private string layoutTemplatePath = "~/Modules/Testimonials/ControlDesigners/SubmitTestimonialDesignerTemplate.ascx";
+
 		/// <summary>
 		/// Gets or sets the layout template path.
 		/// </summary>
@@ -27,11 +28,13 @@ namespace SitefinityWebApp.Modules.Testimonials.ControlDesigners
 		/// </value>
 		public override string LayoutTemplatePath
 		{
-			get { return _layoutTemplatePath; }
-			set { _layoutTemplatePath = value; }
+			get { return this.layoutTemplatePath; }
+
+			set { this.layoutTemplatePath = value; }
 		}
 
-		private string _scriptPath = "~/Modules/Testimonials/ControlDesigners/SubmitTestimonialDesigner.js";
+		private string scriptPath = "~/Modules/Testimonials/ControlDesigners/SubmitTestimonialDesigner.js";
+
 		/// <summary>
 		/// Gets or sets the designer script path.
 		/// </summary>
@@ -40,8 +43,9 @@ namespace SitefinityWebApp.Modules.Testimonials.ControlDesigners
 		/// </value>
 		public string DesignerScriptPath
 		{
-			get { return _scriptPath; }
-			set { _scriptPath = value; }
+			get { return this.scriptPath; }
+
+			set { this.scriptPath = value; }
 		}
 
 		/// <summary>
@@ -64,7 +68,7 @@ namespace SitefinityWebApp.Modules.Testimonials.ControlDesigners
 			var scripts = base.GetScriptReferences() as List<ScriptReference>;
 			if (scripts == null) return base.GetScriptReferences();
 
-			scripts.Add(new ScriptReference(DesignerScriptPath));
+			scripts.Add(new ScriptReference(this.DesignerScriptPath));
 			return scripts.ToArray();
 		}
 	}

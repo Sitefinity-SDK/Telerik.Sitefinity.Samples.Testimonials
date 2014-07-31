@@ -15,7 +15,7 @@ namespace SitefinityWebApp.Modules.Testimonials.Data
 		protected override IList<MappingConfiguration> PrepareMapping()
 		{
 			var mappings = new List<MappingConfiguration>();
-			var testimonialMapping = MapTestimonialsTable();
+			var testimonialMapping = this.MapTestimonialsTable();
 			mappings.Add(testimonialMapping);
 			return mappings;
 		}

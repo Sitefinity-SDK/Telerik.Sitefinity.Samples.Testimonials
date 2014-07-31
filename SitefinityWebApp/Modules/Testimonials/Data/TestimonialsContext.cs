@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using Telerik.OpenAccess;
-using System.Configuration;
 using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Data.Configuration;
 using Telerik.Sitefinity.Data.OA;
@@ -20,7 +20,6 @@ namespace SitefinityWebApp.Modules.Testimonials.Data
 		public TestimonialsContext(string connectionString, BackendConfiguration backendConfig, Telerik.OpenAccess.Metadata.MetadataContainer metadataContainer)
 			: base(connectionString, backendConfig, metadataContainer)
 		{
-
 		}
 
 		/// <summary>
@@ -28,7 +27,10 @@ namespace SitefinityWebApp.Modules.Testimonials.Data
 		/// </summary>
 		public IQueryable<Testimonial> Testimonials
 		{
-			get { return GetAll<Testimonial>(); }
+			get 
+            { 
+                return this.GetAll<Testimonial>(); 
+            }
 		}
 	}
 }

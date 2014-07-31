@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SitefinityWebApp.Modules.Testimonials.ControlDesigners;
 using SitefinityWebApp.Modules.Testimonials.Data;
 using Telerik.Sitefinity.Web.UI.ControlDesign;
-using SitefinityWebApp.Modules.Testimonials.ControlDesigners;
-using System.Text.RegularExpressions;
 
 namespace SitefinityWebApp.Modules.Testimonials
 {
@@ -32,15 +32,14 @@ namespace SitefinityWebApp.Modules.Testimonials
 
 		public bool AutoPublish
 		{
-			get { return autoPublish; }
-			set { autoPublish = value; }
+			get { return this.autoPublish; }
+			set { this.autoPublish = value; }
 		}
 
 		#endregion
 
 		protected void Page_Load(object sender, EventArgs e)
-		{
-			
+		{			
 		}
 
 		/// <summary>
@@ -48,7 +47,7 @@ namespace SitefinityWebApp.Modules.Testimonials
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-		protected void btnSave_Click(object sender, EventArgs e)
+		protected void BtnSave_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -60,12 +59,12 @@ namespace SitefinityWebApp.Modules.Testimonials
 				newTestimonial.Summary = Summary.Text;
 				newTestimonial.Text = Text.Value.ToString();
 				newTestimonial.Rating = Rating.Value;
-				newTestimonial.Published = AutoPublish;
+				newTestimonial.Published = this.AutoPublish;
 				context.Add(newTestimonial);
 
 				context.SaveChanges();
 
-				if (AutoPublish)
+				if (this.AutoPublish)
 					Status.Text = "<p><strong>Your testimonial has been submitted successfully!</p>";
 				else
 					Status.Text = "<p><strong>Your testimonial has been submitted successfully! Please allow 24 hours for review by the administration.</p>";
@@ -76,7 +75,7 @@ namespace SitefinityWebApp.Modules.Testimonials
 				Text.Value = string.Empty;
 				Rating.Value = 0;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				Status.Text = "<p><em>An error occurred while submitting your testimonial. Please try again.</p>";
 			}

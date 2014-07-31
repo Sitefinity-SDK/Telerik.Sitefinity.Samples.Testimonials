@@ -73,8 +73,7 @@ namespace SitefinityWebApp.Modules.Testimonials.Data
 		/// </summary>
 		public Testimonial()
 		{
-			DatePosted = DateTime.Now;
+			this.DatePosted = DateTime.Now;
 		}
-
 	}
 }

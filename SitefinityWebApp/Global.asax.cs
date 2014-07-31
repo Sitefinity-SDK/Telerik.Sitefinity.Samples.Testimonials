@@ -1,11 +1,11 @@
-﻿using SitefinityWebApp.Modules.Testimonials;
-using SitefinityWebApp.Modules.Testimonials.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using SitefinityWebApp.Modules.Testimonials;
+using SitefinityWebApp.Modules.Testimonials.Data;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Abstractions.VirtualPath.Configuration;
 using Telerik.Sitefinity.Configuration;
@@ -36,13 +36,13 @@ namespace SitefinityWebApp
 
 		protected void Application_Start(object sender, EventArgs e)
 		{
-			Telerik.Sitefinity.Abstractions.Bootstrapper.Initializing += new EventHandler<Telerik.Sitefinity.Data.ExecutingEventArgs>(Bootstrapper_Initializing);
+			Telerik.Sitefinity.Abstractions.Bootstrapper.Initializing += new EventHandler<Telerik.Sitefinity.Data.ExecutingEventArgs>(this.Bootstrapper_Initializing);
             SystemManager.ApplicationStart += SystemManager_ApplicationStart;
 		}
 
-        void SystemManager_ApplicationStart(object sender, EventArgs e)
+        private void SystemManager_ApplicationStart(object sender, EventArgs e)
         {
-            SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(CreateSampleWorker);
+            SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(this.CreateSampleWorker);
             SystemManager.RunWithElevatedPrivilege(worker);
         }
 
@@ -157,22 +157,18 @@ namespace SitefinityWebApp
 
             //create admin
             SampleUtilities.CreateUsersAndRoles();
-            //SampleUtilities.FrontEndAuthenticate();
         }		
 
 		protected void Session_Start(object sender, EventArgs e)
 		{
-
 		}
 
 		protected void Application_BeginRequest(object sender, EventArgs e)
 		{
-
 		}
 
 		protected void Application_AuthenticateRequest(object sender, EventArgs e)
 		{
-
 		}
 
 		protected void Application_Error(object sender, EventArgs e)
@@ -181,12 +177,10 @@ namespace SitefinityWebApp
 
 		protected void Session_End(object sender, EventArgs e)
 		{
-
 		}
 
 		protected void Application_End(object sender, EventArgs e)
 		{
-
 		}
 	}
 }
