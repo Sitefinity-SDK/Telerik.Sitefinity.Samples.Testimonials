@@ -78,8 +78,6 @@ namespace SitefinityWebApp.Modules.Testimonials
 				this.CreatePage(pageManager, this.EditPageId, this.LandingPageId, "Edit", false, "Edit Testimonial", ctrl);
 			}
 
-			#region Register Toolbox Widget
-
             string toolboxName = "PageControls";
             string sectionName = "Samples";
             var config = initializer.Context.GetConfig<ToolboxesConfig>();
@@ -126,8 +124,6 @@ namespace SitefinityWebApp.Modules.Testimonials
                 };
                 section.Tools.Add(tool);
             }
-            
-            #endregion
         }
   
 		private void CreatePage(PageManager pageManager, Guid pageID, Guid parentPageID, string urlName, bool showInNavigation, string title, PageControl control)

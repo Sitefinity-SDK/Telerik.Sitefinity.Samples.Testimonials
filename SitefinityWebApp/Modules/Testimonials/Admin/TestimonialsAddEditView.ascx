@@ -34,7 +34,7 @@
 						</li>
 					</ul>
 
-					<p><asp:Button ID="btnSave" runat="server" Text="Save Testimonial" onclick="btnSave_Click" /> or <a href="<%= ResolveUrl("~/Sitefinity/Content/Testimonials") %>">Cancel and go back to Testimonials</a></p>
+					<p><asp:Button ID="btnSave" runat="server" Text="Save Testimonial" onclick="BtnSave_Click" /> or <a href="<%= ResolveUrl("~/Sitefinity/Content/Testimonials") %>">Cancel and go back to Testimonials</a></p>
 				</div>
 			</fieldset>
 		</div>

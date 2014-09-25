@@ -28,7 +28,7 @@
 		<telerik:RadRating ID="Rating" runat="server" Precision="Item" ItemCount="5" />
 	</li>
 	<li>
-		<p><asp:Button ID="btnSave" runat="server" Text="Save Testimonial" OnClick="btnSave_Click" /></p>
+		<p><asp:Button ID="btnSave" runat="server" Text="Save Testimonial" OnClick="BtnSave_Click" /></p>
 	</li>
 </ul>
 <p><a href="<%= ResolveUrl("~/") %>">&laquo; Back to Testimonials</a></p>
