@@ -15,6 +15,7 @@ using Telerik.Sitefinity.Modules.Pages;
 using Telerik.Sitefinity.Pages.Model;
 using Telerik.Sitefinity.Samples.Common;
 using Telerik.Sitefinity.Services;
+using Telerik.Sitefinity.Data;
 
 namespace SitefinityWebApp
 {
@@ -36,23 +37,22 @@ namespace SitefinityWebApp
 
 		protected void Application_Start(object sender, EventArgs e)
 		{
-			Telerik.Sitefinity.Abstractions.Bootstrapper.Initializing += new EventHandler<Telerik.Sitefinity.Data.ExecutingEventArgs>(this.Bootstrapper_Initializing);
-            SystemManager.ApplicationStart += SystemManager_ApplicationStart;
+             Bootstrapper.Initialized += Bootstrapper_Initialized;
 		}
 
-        private void SystemManager_ApplicationStart(object sender, EventArgs e)
+        void Bootstrapper_Initialized(object sender, ExecutedEventArgs e)
         {
-            SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(this.CreateSampleWorker);
-            SystemManager.RunWithElevatedPrivilege(worker);
-        }
-
-		protected void Bootstrapper_Initializing(object sender, Telerik.Sitefinity.Data.ExecutingEventArgs args)
-		{
-			if (args.CommandName == "RegisterRoutes")
-			{
+            if (e.CommandName == "RegisterRoutes")
+            {
                 SampleUtilities.RegisterModule<TestimonialsModule>("Testimonials", "A simple user-control based module for maintaining a list of testimonials that can be sumitted by users.");
-			}
-		}
+            }
+            if ((Bootstrapper.IsDataInitialized) && (e.CommandName == "Bootstrapped"))
+            {
+                SystemManager.RunWithElevatedPrivilegeDelegate worker = new SystemManager.RunWithElevatedPrivilegeDelegate(this.CreateSampleWorker);
+                SystemManager.RunWithElevatedPrivilege(worker);
+            }
+        }
+            
 
         private void CreateSampleWorker(object[] args)
         {            
@@ -153,10 +153,7 @@ namespace SitefinityWebApp
                 Published = true,
                 UrlName = "jim-doe"
             });
-            context.SaveChanges();            
-
-            //create admin
-            SampleUtilities.CreateUsersAndRoles();
+            context.SaveChanges();
         }		
 
 		protected void Session_Start(object sender, EventArgs e)
