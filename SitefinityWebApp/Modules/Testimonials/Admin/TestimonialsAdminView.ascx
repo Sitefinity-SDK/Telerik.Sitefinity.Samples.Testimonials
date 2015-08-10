@@ -18,7 +18,7 @@
 		
 		<div class="sfWorkArea sfClearfix">
 		<div class="rgTopOffset">
-		<telerik:RadGrid ID="TestimonialsGrid" runat="server" Skin="Sitefinity" ondeletecommand="TestimonialsGrid_DeleteCommand">
+		<telerik:RadGrid ID="TestimonialsGrid" runat="server" Skin="Default" ondeletecommand="TestimonialsGrid_DeleteCommand">
 			<MasterTableView DataKeyNames="ID" AutoGenerateColumns="false">
 			<NoRecordsTemplate>
 				<div class="sfEmptyList" style="margin-top: 10px;">
