@@ -1,4 +1,4 @@
-Telerik.Sitefinity.Samples.Testimonials
+Progress.Sitefinity.Samples.Testimonials
 =======================================
 
 [![Build Status](http://sdk-jenkins-ci.cloudapp.net/buildStatus/icon?job=Telerik.Sitefinity.Samples.Testimonials.CI)](http://sdk-jenkins-ci.cloudapp.net/job/Telerik.Sitefinity.Samples.Testimonials.CI/)
@@ -7,7 +7,7 @@ The Testimonials sample project is a simple user widget-based module for maintai
 
 ### Requirements
 
-* Sitefinity license
+* Sitefinity CMS license
 * .NET Framework 4
 * Visual Studio 2012
 * Microsoft SQL Server 2008R2 or later versions
@@ -31,11 +31,11 @@ For a history and additional information related to package versions on differen
 2. Modify the **dbType**, **sqlInstance** and **dbName** values to match your server settings.
 3. Build the solution.
 
-For version-specific details about the required Sitefinity NuGet packages for this sample application, click on [Releases](https://github.com/Sitefinity-SDK/Telerik.Sitefinity.Samples.Testimonials/releases).
+For version-specific details about the required Sitefinity CMS NuGet packages for this sample application, click on [Releases](https://github.com/Sitefinity-SDK/Telerik.Sitefinity.Samples.Testimonials/releases).
 
 ### Login
 
-To login to Sitefinity backend, use the following credentials:   
+To login into the Sitefinity CMS backend, use the following credentials:   
 **Username:** admin   
 **Password:** password
 
